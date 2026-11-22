@@ -1,15 +1,24 @@
-# Module 3: Server Monitoring
+# Module 2: Users, Groups & Permissions
 
-These are the commands I use to check the health of a Linux server.
+## 1. Core Files
+- `/etc/passwd`: Stores user account information (UID, GID, home directory, shell).
+- `/etc/shadow`: Stores encrypted passwords (only accessible by root).
+- `/etc/group`: Stores group information.
 
-## 1. Disk Space
-- `df -h`: Shows how much disk space is used on all mounted filesystems. If a disk hits 100%, services will crash.
+## 2. User Management Commands
+- `useradd -m <username>`: Creates a new user and generates a home directory.
+- `passwd <username>`: Sets or changes a user's password.
+- `groupadd <groupname>`: Creates a new group.
+- `usermod -aG <group> <user>`: Appends a user to a secondary group.
+- `id <username>`: Displays the user's UID, GID, and group memberships.
+- `userdel -r <username>`: Deletes the user and removes their home directory.
 
-## 2. Memory (RAM)
-- `free -h`: Shows total, used, and free RAM. 
-
-## 3. System Load & Uptime
-- `uptime`: Shows how long the server has been running and the load average (over 1 min, 5 min, 15 min).
-
-## 4. Running Processes
-- `top`: Shows a real-time, live view of all running processes, CPU usage, and memory usage. (Press 'q' to quit).
+## 3. File Permissions (chmod & chown)
+- `chmod`: Changes the permissions of a file. (e.g., `chmod 755 file.sh`).
+- `chown`: Changes the owner of a file. (e.g., `sudo chown root:root file.txt`).
+- **The Numbers:**
+  - 7 = Read + Write + Execute (rwx)
+  - 6 = Read + Write (rw-)
+  - 5 = Read + Execute (r-x)
+  - 4 = Read only (r--)
+  - 0 = No permissions (---)
